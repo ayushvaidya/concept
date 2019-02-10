@@ -30,7 +30,7 @@ class EpicsController < ApplicationController
     respond_to do |format|
       if @epic.save
         format.html { redirect_to root_path, notice: 'Epic was successfully created.' }
-        format.json { render :show, status: :created, location: @epic }
+        format.json { render :show, status: :created, location: root_path }
       else
         format.html { render :new }
         format.json { render json: @epic.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class EpicsController < ApplicationController
     respond_to do |format|
       if @epic.update(epic_params)
         format.html { redirect_to root_path, notice: 'Epic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @epic }
+        format.json { render :show, status: :ok, location: root_path }
       else
         format.html { render :edit }
         format.json { render json: @epic.errors, status: :unprocessable_entity }

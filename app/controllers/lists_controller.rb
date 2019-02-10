@@ -43,7 +43,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to root_path, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
+        format.json { render :show, status: :ok, location: root_path }
       else
         format.html { render :edit }
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to room_url, notice: 'List was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
