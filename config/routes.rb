@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+
   resources :cards do
     collection do
       patch :sort
     end
   end
-
-
 
   resources :lists
   resources :epics
