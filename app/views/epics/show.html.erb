@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @epic.name %>
+</p>
+
+<%= link_to 'Edit', edit_epic_path(@epic) %> |
+<%= link_to 'Back', epics_path %>
+<%= link_to 'New Link', new_list_path(epic_id: @epic.id) %>
+
+
+<% @lists.each do |list| %>
+  <%= list.name %>
+<% end %>
