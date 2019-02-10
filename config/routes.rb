@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'epics#index'
+  devise_for :users
+  resources :projects
+  root 'projects#index'
 
   resources :cards do
     collection do

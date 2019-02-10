@@ -14,7 +14,7 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    @list = List.new
+    @list = current_user.lists.build
   end
 
   # GET /lists/1/edit
@@ -24,12 +24,12 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.build(list_params)
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to root_path, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: root_path }
+        format.html { redirect_to project_path(id: @list.project_id), notice: 'List was successfully created.' }
+        format.json { render :show, status: :created, location: project_path(id: @list.project_id) }
       else
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to root_path, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: root_path }
+        format.html { redirect_to project_path(id: @list.project_id), notice: 'List was successfully updated.' }
+        format.json { render :show, status: :ok, location: project_path(id: @list.project_id) }
       else
         format.html { render :edit }
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'List was successfully destroyed.' }
+      format.html { redirect_to project_path(id: @list.project_id), notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:epic_id, :name)
+      params.require(:list).permit(:project_id, :epic_id, :name)
     end
 end

@@ -26,7 +26,7 @@
       <% end %>
 
     <div class="shared-links">
-      <%= link_to 'Back', root_path, class: 'link' %>
+      <%= link_to 'Back', project_path(id: @list.project_id), class: 'link' %>
       <%= link_to 'Destroy', @list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
     </div>
   </div>

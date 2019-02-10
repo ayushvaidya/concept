@@ -1,4 +1,7 @@
 class Epic < ApplicationRecord
-  has_many :lists
-  has_many :cards
+  belongs_to :user
+  belongs_to :project
+
+  has_many :lists, :dependent => :delete_all
+  has_many :cards, :dependent => :delete_all
 end

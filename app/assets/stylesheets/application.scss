@@ -30,8 +30,14 @@ $dark-gray: #0E0E0E;
 
 .main-container {
   height: 100%;
-  padding: 64px;
+  padding: 4rem;
   width: 100%;
+}
+
+/** Navbar **/
+
+.navbar {
+  padding: 0.5rem 4rem;
 }
 
 
@@ -44,10 +50,13 @@ $dark-gray: #0E0E0E;
 
 .epic-container {
   min-height: 300px;
+  display: inline-block;
+  margin-right: 24px;
 }
 
 .epic {
   display: flex;
+  margin-right: 24px;
 }
 
 .list {

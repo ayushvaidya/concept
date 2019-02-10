@@ -3,7 +3,7 @@
     <div class="title">New Story</div>
     <%= render 'form', card: @card %>
     <div class="shared-links">
-      <%= link_to 'Back', root_path, class: 'link' %>
+      <%= link_to 'Back', project_path(id: params[:project_id]), class: 'link' %>
     </div>
   </div>
 </div>

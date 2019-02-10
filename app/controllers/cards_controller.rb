@@ -14,7 +14,7 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
-    @card = Card.new
+    @card = current_user.cards.build
   end
 
   # GET /cards/1/edit
@@ -33,12 +33,12 @@ class CardsController < ApplicationController
   # POST /cards
   # POST /cards.json
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.build(card_params)
 
     respond_to do |format|
       if @card.save
-        format.html { redirect_to root_path, notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: root_path }
+        format.html { redirect_to project_path(id: @card.project_id), notice: 'Card was successfully created.' }
+        format.json { render :show, status: :created, location: project_path(id: @card.project_id) }
       else
         format.html { render :new }
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -49,10 +49,11 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
+
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to root_path, notice: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: root_path }
+        format.html { redirect_to project_path(id: @card.project_id), notice: 'Card was successfully updated.' }
+        format.json { render :show, status: :ok, location: project_path(id: @card.project_id) }
       else
         format.html { render :edit }
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -65,7 +66,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Card was successfully destroyed.' }
+      format.html { redirect_to project_path(id: @card.project_id), notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -78,6 +79,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:list_id, :epic_id, :name)
+      params.require(:card).permit(:list_id, :epic_id, :project_id, :name)
     end
 end

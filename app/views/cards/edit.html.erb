@@ -2,12 +2,12 @@
   <div class="form-container">
     <div class="title">New Story</div>
       <%= simple_form_for @card do |form| %>
-        <% if card.errors.any? %>
+        <% if @card.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+            <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
 
             <ul>
-            <% card.errors.full_messages.each do |message| %>
+            <% @card.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
             </ul>
@@ -28,7 +28,7 @@
 
 
     <div class="shared-links">
-      <%= link_to 'Back', root_path, class: 'link' %>
+      <%= link_to 'Back', project_path(id: @card.project_id), class: 'link' %>
       <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
     </div>
   </div>

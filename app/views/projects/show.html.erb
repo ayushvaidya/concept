@@ -1,0 +1,48 @@
+<%= link_to 'New Epic', new_epic_path(project_id: @project.id), class: "btn btn-primary mb-5" %>
+
+
+<div class="story-container">
+
+<% @project.epics.each do |epic| %>
+  <div class="epic-container">
+
+    <%= link_to edit_epic_path(epic.id) do %>
+      <h2 class="mb-4"><%= epic.name %></h2>
+    <% end %>
+
+    <%= link_to '+ Add activity', new_list_path(epic_id: epic.id, project_id: @project.id), class: 'add-card' %>
+
+    <div class="epic mt-5">
+      <% epic.lists.each do |list| %>
+
+        <div class="list">
+
+          <%= link_to edit_list_path(list.id) do %>
+            <h5 class="mb-4"><%= list.name %></h5>
+          <% end %>
+
+          <div id="cards" data-list-id="<%= list.id %>" data-url="<%= sort_cards_path %>">
+
+            <% list.cards.order(:position).each do |card| %>
+
+              <div class="card" id="<%= dom_id(card) %>">
+                <%= link_to edit_card_path(card.id) do %>
+                  <%= card.name %>
+                <% end %>
+
+              </div>
+
+            <% end %>
+          </div>
+
+          <%= link_to '+ Add story', new_card_path(epic_id: epic.id, list_id:list.id, project_id: @project.id), class: 'add-card'%>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
+</div>
+
+
+
