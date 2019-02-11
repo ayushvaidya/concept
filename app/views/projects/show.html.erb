@@ -13,8 +13,8 @@
 
     <%= link_to edit_epic_path(epic.id) do %>
       <div class="info">
-        <h3><%= epic.name %></h3>
-        <%= link_to '+ Add activity', new_list_path(project_id: @project.id, epic_id: epic.id), class: "btn btn-primary ml-5" %>
+        <h5><%= epic.name %></h5>
+        <%= link_to '+ Add activity', new_list_path(project_id: @project.id, epic_id: epic.id), class: "btn btn-primary mt-2" %>
       </div>
     <% end %>
 
