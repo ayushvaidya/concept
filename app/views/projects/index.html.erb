@@ -1,18 +1,26 @@
 <% if user_signed_in? %>
+  <div class="main-container">
+    <h3 class='mt-5 mb-5'>Projects</h3>
 
-  <% @projects.each do |project| %>
+    <% @projects.each do |project| %>
+      <%= link_to project, class: 'project-card' do %>
 
-    <%= project.name %>
-    <%= link_to 'Show', project %>
-    <%= link_to 'Edit', edit_project_path(project) %>
-    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class='title'>
+            <%= project.name %>
+          </div>
 
-  <% end %>
+      <% end %>
+    <% end %>
+
+    <%= link_to new_project_path, class: 'new-project-card' do %>
+        <div>+ Create new story map</div>
+    <% end %>
 
 
-  <br>
+  </div>
 
-  <%= link_to 'New Project', new_project_path %>
 <% else %>
-  hi
+  <div class="home-page">
+    <%= render 'homepage' %>
+  </div>
 <% end %>

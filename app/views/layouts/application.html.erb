@@ -13,45 +13,40 @@
   <body>
 
 
-
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-        <%= link_to "ConceptGuide", root_path, class: 'navbar-brand' %>
-
+    <% if user_signed_in? %>
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <%= link_to "Frame", root_path, class: 'navbar-brand' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarsExample03">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <%= link_to 'Projects', root_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item dropdown">
 
+              <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
 
-            <% if user_signed_in? %>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
+              <div class="dropdown-menu" aria-labelledby="dropdown03">
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
 
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown03">
-                  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Log In", new_user_session_path %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Sign Up", new_user_registration_path, class: 'nav-sign-up-button' %>
-              </li>
-
-            <% end %>
+            </li>
           </ul>
         </div>
-    </nav>
+      </nav>
+    <% else %>
+      <nav class="navbar navbar-black fixed-top">
+        <div class="home-page-container nav-flex">
+          <%= link_to "Frame", root_path, class: 'navbar-brand' %>
+          <%= link_to "Log In", new_user_session_path, class: "nav-item" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
+        </div>
+      </nav>
+    <% end %>
 
-    <div class="main-container">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
   </body>
 </html>

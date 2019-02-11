@@ -1,20 +1,30 @@
-<h2>Log in</h2>
+<div class="form-page" style="background-color: #000">
+  <div class="form-container" style="background-color: #0E0E0E">
+    <div class="title" style="color: #fff">Log in</div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: "form-control dark-form" },
+                  label: false,
+                  placeholder: "Email Address" %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password", class: "form-control dark-form" },
+                  label: false,
+                  placeholder: "Password" %>
+
+      <%= f.hidden_field :remember_me, value: true %>
+
+      <%= f.button :submit, "Log in", class: "button" %>
+
+    <% end %>
+
+    <div class="shared-links">
+      <%= render "devise/shared/links" %>
+    </div>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
