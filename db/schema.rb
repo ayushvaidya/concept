@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_081709) do
+ActiveRecord::Schema.define(version: 2019_02_15_211417) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "list_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_081709) do
     t.integer "position"
     t.integer "project_id"
     t.integer "user_id"
+    t.text "description"
     t.index ["epic_id"], name: "index_cards_on_epic_id"
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["project_id"], name: "index_cards_on_project_id"

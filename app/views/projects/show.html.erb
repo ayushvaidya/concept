@@ -11,7 +11,7 @@
 <% @project.epics.each do |epic| %>
   <div class="epic-container">
 
-    <%= link_to edit_epic_path(epic.id) do %>
+    <%= link_to edit_epic_path(epic.id, project_id: @project.id) do %>
       <div class="info">
         <h5><%= epic.name %></h5>
         <%= link_to '+ Add activity', new_list_path(project_id: @project.id, epic_id: epic.id), class: "btn btn-primary mt-2" %>
@@ -23,7 +23,7 @@
 
         <div class="list">
 
-          <%= link_to edit_list_path(list.id) do %>
+          <%= link_to edit_list_path(list.id, project_id: @project.id, epic_id: epic.id) do %>
             <h5 class="mb-4"><%= list.name %></h5>
           <% end %>
 
@@ -32,7 +32,7 @@
             <% list.cards.order(:position).each do |card| %>
 
               <div class="card" id="<%= dom_id(card) %>">
-                <%= link_to edit_card_path(card.id) do %>
+                <%= link_to edit_card_path(card.id, project_id: @project.id, epic_id: epic.id, list_id: list.id) do %>
                   <%= card.name %>
                 <% end %>
 
