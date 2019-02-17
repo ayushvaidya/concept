@@ -33,6 +33,19 @@
 
               <div class="card" id="<%= dom_id(card) %>">
                 <%= link_to edit_card_path(card.id, project_id: @project.id, epic_id: epic.id, list_id: list.id) do %>
+
+                  <% if card.status == 'To Do' %>
+                    <div class="status mb-2" style="background-color: #4353ff"></div>
+                  <% end %>
+
+                  <% if card.status == 'In Progress' %>
+                    <div class="status mb-2" style="background-color: #ff6f01"></div>
+                  <% end %>
+
+                  <% if card.status == 'Complete' %>
+                    <div class="status mb-2" style="background-color: #38d896"></div>
+                  <% end %>
+
                   <%= card.name %>
                 <% end %>
 

@@ -1,6 +1,6 @@
 <div class="form-page">
   <div class="form-container">
-    <div class="title">New Activity</div>
+    <div class="title">Edit Activity</div>
       <%= simple_form_for @list do |form| %>
         <% if @list.errors.any? %>
           <div id="error_explanation">
@@ -27,7 +27,7 @@
 
     <div class="shared-links">
       <%= link_to 'Back', project_path(id: @list.project_id), class: 'link' %>
-      <%= link_to 'Destroy', @list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
+      <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
     </div>
   </div>
 </div>

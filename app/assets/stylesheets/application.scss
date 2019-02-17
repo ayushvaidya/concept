@@ -177,6 +177,15 @@ a, a:hover, a:focus {
 
 }
 
+input, button, select, optgroup, textarea {
+  background-color: white;
+  border: 1px solid $light-border;
+  border-radius: 4px;
+  height: 48px;
+  padding-left: 8px;
+  width: 100%;
+}
+
 
 /*** Form Pages ***/
 
@@ -184,7 +193,7 @@ a, a:hover, a:focus {
   align-items: center;
   background-color: $light-bg;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 
   .form-container {
     background-color: #fff;
@@ -230,6 +239,12 @@ a, a:hover, a:focus {
       }
     }
   }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
 }
 
 
@@ -335,6 +350,12 @@ a, a:hover, a:focus {
   margin-bottom: 8px;
   min-height: 40px;
   padding: 8px;
+
+  .status {
+    border-radius: 4px;
+    height: 6px;
+    width: 40px;
+  }
 }
 
 .add-card {

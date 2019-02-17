@@ -1,6 +1,6 @@
 <div class="form-page">
   <div class="form-container">
-    <div class="title">New Epic</div>
+    <div class="title">Edit Epic</div>
       <%= simple_form_for @epic do |form| %>
         <% if @epic.errors.any? %>
           <div id="error_explanation">
@@ -25,7 +25,7 @@
 
     <div class="shared-links">
       <%= link_to 'Back', project_path(id: @epic.project_id), class: 'link' %>
-      <%= link_to 'Destroy', @epic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
+      <%= link_to 'Delete', @epic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
     </div>
   </div>
 </div>

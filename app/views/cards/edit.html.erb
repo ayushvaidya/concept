@@ -1,6 +1,6 @@
 <div class="form-page">
   <div class="form-container">
-    <div class="title">New Story</div>
+    <div class="title">Edit Story</div>
       <%= simple_form_for @card do |form| %>
         <% if @card.errors.any? %>
           <div id="error_explanation">
@@ -18,15 +18,36 @@
 
         <%= form.hidden_field :epic_id, value: params[:epic_id] %>
 
-        <%= form.text_field :name,
-          class: "form-control",
-          placeholder: 'Story'
-        %>
+        <div class="mb-3">
+          <label>Name</label>
+          <%= form.text_field :name,
+            class: "form-control",
+            placeholder: 'Story'
+          %>
+        </div>
 
-        <%= form.text_field :description,
-          class: "form-control",
-          placeholder: 'Description'
-        %>
+        <div class="mb-3">
+            <label>Description</label>
+          <%= form.text_field :description,
+            class: "form-control",
+            placeholder: 'Description'
+          %>
+        </div>
+
+        <div class="mb-3">
+          <label>Status</label>
+          <%= form.select :status, [
+            'To Do', 'In Progress', 'Complete'],
+            class: "form-control",
+            placeholder: 'Description'
+          %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.input :story_points, :as => "integer",
+            class: "form-control"
+          %>
+        </div>
 
         <%= form.button :submit, "Update", class: "button" %>
       <% end %>
@@ -34,7 +55,7 @@
 
     <div class="shared-links">
       <%= link_to 'Back', project_path(id: @card.project_id), class: 'link' %>
-      <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
+      <%= link_to 'Delete', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' %>
     </div>
   </div>
 </div>
