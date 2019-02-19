@@ -13,6 +13,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     render :layout => 'storymap'
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename='items.xlsx'"
+      }
+      format.html
+    end
+
   end
 
   # GET /projects/new
