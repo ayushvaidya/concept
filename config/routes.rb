@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lists
+  resources :lists do
+    collection do
+      patch :sort
+    end
+  end
+
   resources :epics
 
 

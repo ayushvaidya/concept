@@ -7,10 +7,6 @@ wb.styles do |style|
 
   wb.add_worksheet(name: Project.find(params[:id]).name) do |sheet|
 
-    sheet.add_row [Project.find(params[:id]).name], style: project_heading
-
-    sheet.add_row []
-
     sheet.add_row ["Epic", "Activity", "Story", "Status", "Description"], style: heading
 
     Project.find(params[:id]).cards.each do |card|

@@ -21,6 +21,14 @@ class ListsController < ApplicationController
   def edit
   end
 
+  def sort
+    params[:list].each_with_index do |id, index|
+      List.where(id: id).update_all(position: index + 1)
+    end
+
+    head :ok
+  end
+
   # POST /lists
   # POST /lists.json
   def create

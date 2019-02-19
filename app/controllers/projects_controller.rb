@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
       format.xlsx {
         response.headers[
           'Content-Disposition'
-        ] = "attachment; filename='items.xlsx'"
+        ] = "attachment; filename='projects.xlsx'"
       }
       format.html
     end
