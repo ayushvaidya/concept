@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_092914) do
+ActiveRecord::Schema.define(version: 2019_02_19_143614) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "list_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_02_17_092914) do
     t.datetime "updated_at", null: false
     t.integer "project_id"
     t.integer "user_id"
+    t.integer "position"
     t.index ["epic_id"], name: "index_lists_on_epic_id"
     t.index ["project_id"], name: "index_lists_on_project_id"
     t.index ["user_id"], name: "index_lists_on_user_id"

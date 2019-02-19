@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+
+
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: Project.find(params[:id]).name) do |sheet|
+
+    sheet.add_row ["Epic", "Activity", "Story", "Status", "Description"], style: heading
+
+    Project.find(params[:id]).cards.each do |card|
+
+      sheet.add_row [card.epic.name, card.list.name, card.name, card.status, card.description]
+    end
+  end
+end
